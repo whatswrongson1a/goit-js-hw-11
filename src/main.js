@@ -5,9 +5,6 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 import { searchImages } from "./js/pixabay-api.js";
 import { renderImages, clearGallery, showLoader, hideLoader } from "./js/render-functions.js";
 
-document.querySelector('.search-form').addEventListener('submit', async (event) => {
-  event.preventDefault();
-
   const query = document.querySelector('input[name="query"]').value.trim();
   if (query === "") {
     iziToast.error({
