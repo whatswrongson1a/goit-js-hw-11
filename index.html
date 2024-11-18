@@ -4,77 +4,98 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/goit-js-hw-11/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="node_modules/izitoast/dist/css/iziToast.min.css" />
+<link rel="stylesheet" href="node_modules/simplelightbox/dist/simple-lightbox.min.css" />
+
     <title>Vanilla App Template</title>
     <style>
-    
-/* Общие стили */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  color: #434455;
+  background-color: #f4f4f9;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 /* Форма поиска */
+
 .search-form {
   display: flex;
   justify-content: center;
-  align-items: center;
   margin-bottom: 20px;
 }
 
 .search-form input[type="text"] {
-  width: 400px;
-  padding: 10px 15px;
+  font-family: 'Montserrat', sans-serif;
+  width: 300px;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px 0 0 5px;
-  outline: none;
+  border-radius: 8px;
   font-size: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .search-form button {
-  padding: 10px 20px;
+  padding: 10px 15px;
+  margin-left: 10px;
   border: none;
-  background-color: #1e90ff;
+  background-color: #4E75FF;
   color: #fff;
-  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 0 5px 5px 0;
-  transition: background-color 0.3s;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
 }
 
 .search-form button:hover {
-  background-color: #1c86ee;
+  background-color: #6C8CFF; 
 }
 
-/* Галерея */
 .gallery {
+  width: 1128px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  width: 100%;
-  max-width: 1200px;
-  padding: 10px 0;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 0 auto;
 }
 
-.gallery-item {
-  position: relative;
+.gallery__item {
+  width: 360px;
+  border-radius: 8px;
   overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #fff;
 }
 
-.gallery-item img {
-  width: 100%;
-  height: auto;
+.gallery__item img {
+  width: 360px;
+  height: 152px;
   display: block;
-  border-bottom:
+  object-fit: cover;
 }
+
+.photo-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 48px; 
+  background-color: #fff;
+  font-size: 14px;
+  border-top: 1px solid #ddd;
+  padding: 0 10px;
+}
+
+.loader {
+  display: none; /* Show the loader by default */
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
     </style>
     <script type="module" crossorigin src="/goit-js-hw-11/index.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-5ObWk2rO.js">
@@ -89,11 +110,13 @@ body {
         <button type="submit">Search</button>
       </form>
     
-      <div class="loader hiden">Loading...</div>
+      <div class="loader hidden">Loading...</div>
     
       <div class="gallery"></div>
+      
     </main>
     
     
+    <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
   </body>
 </html>
