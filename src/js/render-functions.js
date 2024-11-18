@@ -39,46 +39,5 @@ export const hideLoader = () => {
   loader.classList.add('hidden'); // Добавляем класс hidden, чтобы скрыть лоадер
 };
 
-// Когда отправляется форма поиска, показываем лоадер
-document.querySelector('.search-form').addEventListener('submit', async (event) => {
-  event.preventDefault();
-
-  const query = document.querySelector('input[name="query"]').value.trim();
-
-  if (!query) {
-    iziToast.error({
-      title: 'Error',
-      message: 'Please enter a search term.',
-    });
-    return;
-  }
-
-  // Очищаем галерею и показываем лоадер перед загрузкой данных
-  clearGallery(); 
-  showLoader(); // Показываем лоадер, когда начинаем загрузку
-
-  try {
-    const images = await searchImages(query);
-
-    if (images.length === 0) {
-      iziToast.error({
-        title: 'Error',
-        message: 'Sorry, no images found for your search.',
-      });
-    } else {
-      renderImages(images);
-      const lightbox = new SimpleLightbox('.gallery a');
-      lightbox.refresh();
-    }
-  } catch (error) {
-    iziToast.error({
-      title: 'Error',
-      message: 'Something went wrong. Please try again.',
-    });
-  } finally {
-    hideLoader(); // Скрываем лоадер, когда данные загружены
-  }
-});
-
 
 
