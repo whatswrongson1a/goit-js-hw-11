@@ -2,23 +2,24 @@ import iziToast from "izitoast";
 import SimpleLightbox from "simplelightbox";
 import "izitoast/dist/css/iziToast.min.css";
 import "simplelightbox/dist/simple-lightbox.min.css";
-import { searchImages } from "./js/pixabay-api";
-import { renderImages, clearGallery, showLoader, hideLoader } from "./js/render-functions";
+import { searchImages } from "./js/pixabay-api.js";
+import { renderImages, clearGallery, showLoader, hideLoader } from "./js/render-functions.js";
 
 document.querySelector('.search-form').addEventListener('submit', async (event) => {
   event.preventDefault();
 
   const query = document.querySelector('input[name="query"]').value.trim();
-  if (!query) {
+  if (query === "") {
     iziToast.error({
       title: 'Error',
       message: 'Please enter a search term.',
     });
+    hideLoader(); 
     return;
   }
 
   clearGallery(); 
-  showLoader();   
+  showLoader();
 
   try {
     const images = await searchImages(query);
@@ -30,7 +31,7 @@ document.querySelector('.search-form').addEventListener('submit', async (event) 
     } else {
       renderImages(images);
       const lightbox = new SimpleLightbox('.gallery a');
-      lightbox.refresh(); 
+      lightbox.refresh();
     }
   } catch (error) {
     iziToast.error({
@@ -38,6 +39,6 @@ document.querySelector('.search-form').addEventListener('submit', async (event) 
       message: 'Something went wrong. Please try again.',
     });
   } finally {
-    hideLoader();  
+    hideLoader();
   }
 });

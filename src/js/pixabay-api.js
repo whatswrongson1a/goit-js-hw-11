@@ -12,3 +12,13 @@ export const searchImages = async (query) => {
   const data = await response.json();
   return data.hits;  
 };
+
+export const showLoader = () => {
+  const loader = document.querySelector('.loader');
+  loader.classList.remove('hidden');
+};
+
+export const hideLoader = () => {
+  const loader = document.querySelector('.loader');
+  loader.classList.add('hidden');
+};
